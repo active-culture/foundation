@@ -14,6 +14,7 @@ type Coob struct {
     ID   string `json:"id,omitempty"`
     Type string `json:"type"`
     Name string `json:"name,omitempty"`
+    Avatar string `json:"avatar,omitempty"`
 }
 
 // the databae
@@ -26,7 +27,8 @@ func GetCoob(w http.ResponseWriter, r *http.Request) {
 
 // the main squeeze
 func main() {
-    coobs = append(coobs, Coob{Name: "Coobmaster General", ID: "0", Type:"Squalid"})
+    coobs = append(coobs, Coob{Name: "Coobmaster General", ID: "0", Type:"Squalid", Avatar:"http://activeculture.nyc/img/Keroro_1.png"})
+    coobs = append(coobs, Coob{Name: "Coob Garou", ID: "1", Type:"Swamp-esque", Avatar:"http://activeculture.nyc/img/Terminator-1984_612x380_0.jpg"})
     router := mux.NewRouter()
     router.HandleFunc("/coob", GetCoob).Methods("GET")
     fmt.Println("Done")
@@ -34,4 +36,4 @@ func main() {
     log.Fatal(http.ListenAndServe(":8081", router))
 }
 
-// 🙏 to codehakase for the article
+// 🙏 to @codehakase for the article
